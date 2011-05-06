@@ -218,6 +218,15 @@ Bundle 'tsaleh/vim-align'
 Bundle 'ervandew/supertab'
 Bundle 'ZoomWin'
 Bundle 'michaeljsmith/vim-indent-object'
+Bundle 'tpope/vim-unimpaired'
+" Unimpaired configuration
+" Bubble single lines
+nmap <C-Up> [e
+nmap <C-Down> ]e
+" Bubble multiple lines
+vmap <C-Up> [egv
+vmap <C-Down> ]egv
+
 
 " Spell files
 set rtp+=~/.vim/bundle/spellfiles/
