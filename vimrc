@@ -137,6 +137,8 @@ if has("autocmd")
   " Set File type to 'text' for files ending in .txt
   au BufNewFile,BufRead *.txt setfiletype text
 
+  " add json syntax highlighting
+  au BufNewFile,BufRead *.json set ft=javascript
 
   " For all text files set 'textwidth' to 78 characters.
   "au FileType text setlocal tw=78
@@ -197,6 +199,9 @@ Bundle 'msanders/snipmate.vim'
 
 " Syntax highlight
 Bundle 'autoit.vim'
+Bundle 'pangloss/vim-javascript'
+Bundle 'ruby-matchit'
+Bundle 'python_match.vim'
 
 " Git integration
 Bundle 'tpope/vim-git'
