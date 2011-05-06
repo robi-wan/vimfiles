@@ -181,6 +181,12 @@ call vundle#rc()
 " Programming
 Bundle 'tpope/vim-endwise'
 Bundle 'tpope/vim-rails'
+" syntastic syntax checking, enable with :SyntasticEnable
+" for ruby: ruby must be reachable via shell
+"Bundle 'scrooloose/syntastic'
+"let g:syntastic_enable_signs=1          " tell syntastic to use the |:sign| interface to mark syntax errors
+"let g:syntastic_quiet_warnings=1        " show just errors, not warnings
+
 
 " Colorscheme
 Bundle 'robi-wan/vim-railscasts-theme'
@@ -204,9 +210,31 @@ map <F2> :NERDTreeToggle<CR>
 
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'tsaleh/vim-align'
+Bundle 'ervandew/supertab'
+Bundle 'ZoomWin'
+Bundle 'michaeljsmith/vim-indent-object'
 
 " Spell files
 set rtp+=~/.vim/bundle/spellfiles/
+
+" tip from http://vimcasts.org/episodes/tidying-whitespace/
+function! Preserve(command)
+  " Preparation: save last search, and cursor position.
+  let _s=@/
+  let l = line(".")
+  let c = col(".")
+  " Do the business:
+  execute a:command
+  " Clean up: restore previous search history, and cursor position
+  let @/=_s
+  call cursor(l, c)
+endfunction
+
+" strip trailing whitespaces 
+nmap _$ :call Preserve("%s/\\s\\+$//e")<CR>
+" auto-indent the whole file
+nmap _= :call Preserve("normal gg=G")<CR>
+
 
 " Include local vim config
 if filereadable(".vimrc.local")

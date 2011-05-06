@@ -61,3 +61,57 @@ Here's some tips if you've never used VIM before:
   by default. Use `let mapleader = ","` to change this.
 * Keyboard [cheat sheet](http://walking-without-crutches.heroku.com/image/images/vi-vim-cheat-sheet.png).
 
+# Features
+
+## Base Customizations
+
+* Line numbers
+* Show tailing whitespace as `.`
+* Make searching highlighted, incremental, and case insensitive unless a
+  capital letter is used
+* Always show a status line
+* Allow backspacing over everything (identations, eol, and start
+  characters) in insert mode
+* Automatic insertion of closing quotes, parenthesis, and braces
+
+## NERDTree
+
+NERDTree is a file explorer plugin that provides "project drawer"
+functionality to your vim projects.  You can learn more about it with
+:help NERDTree.
+
+**Customizations**:
+
+* Use `<F2>` to toggle NERDTree
+
+## Align
+
+Align lets you align statements on their equal signs, make comment
+boxes, align comments, align declarations, etc.
+
+* `:5,10Align =>` to align lines 5-10 on `=>`'s
+
+## indent\_object
+
+Indent object creates a "text object" that is relative to the current
+ident. Text objects work inside of visual mode, and with `c` (change),
+`d` (delete) and `y` (yank). For instance, try going into a method in
+normal mode, and type `v ii`. Then repeat `ii`.
+
+## surround
+
+Surround allows you to modify "surroundings" around the current text.
+For instance, if the cursor was inside `"foo bar"`, you could type
+`cs"'` to convert the text to `'foo bar'`.
+
+There's a lot more; check it out at `:help surround`
+
+## NERDCommenter
+
+NERDCommenter allows you to wrangle your code comments, regardless of
+filetype. View `help :NERDCommenter` for all the details.
+
+## SuperTab
+
+In insert mode, start typing something and hit `<TAB>` to tab-complete
+based on the current context. 
