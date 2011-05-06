@@ -123,7 +123,7 @@ if has("autocmd")
   " Use the default filetype settings, so that mail gets 'tw' set to 72,
   " 'cindent' is on in C files, etc.
   " Also load indent files, to automatically do language-dependent indenting.
-  filetype plugin indent on
+  "filetype plugin indent on
 
   " make uses real tabs
   au FileType make set noexpandtab
@@ -176,6 +176,9 @@ autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
 autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
 autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
 
+" Scripts and Bundles " {{{
+filetype off
+runtime macros/matchit.vim
 " Vundle
 set rtp+=~/.vim/vundle.git/ 
 call vundle#rc()
@@ -200,12 +203,16 @@ Bundle 'msanders/snipmate.vim'
 " Syntax highlight
 Bundle 'autoit.vim'
 Bundle 'pangloss/vim-javascript'
-Bundle 'ruby-matchit'
-Bundle 'python_match.vim'
+"Bundle 'ruby-matchit'
+"Bundle 'python_match.vim'
+Bundle 'kchmck/vim-coffee-script'
 
 " Git integration
 Bundle 'tpope/vim-git'
 Bundle 'tpope/vim-fugitive'
+
+" (HT|X)ml tool
+Bundle 'ragtag.vim'
 
 " Utility
 Bundle 'tpope/vim-surround'
@@ -227,9 +234,11 @@ nmap <C-Down> ]e
 vmap <C-Up> [egv
 vmap <C-Down> ]egv
 
+filetype plugin indent on      " Automatically detect file types.
 
 " Spell files
 set rtp+=~/.vim/bundle/spellfiles/
+" "}}}
 
 " tip from http://vimcasts.org/episodes/tidying-whitespace/
 function! Preserve(command)
