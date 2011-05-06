@@ -1,33 +1,43 @@
-" Use Vim settings, rather then Vi settings (much better!).
-" This must be first, because it changes other options as a side effect.
-set nocompatible
+" General "{{{
+set nocompatible              " Use Vim settings, rather then Vi settings (much better!).
+                              " This must be first, because it changes other options as a side effect.
 
 set history=256               " Number of things to remember in history.
 
+set autoread                  " automatically read the file again when it is changed outside of Vim
+
 set hidden                    " The current buffer can be put to the background without writing to disk
+
+" Searching
+set incsearch                 " do incremental searching
+set hlsearch                  " switch on highlighting the last used search pattern
+noremap <F7> :set hls!<cr>:set hls?<cr>
+set ignorecase
+set smartcase                 " case insensitive search unless a capital letter is used
+
+
 set number                    " disable with set nonumber or short set nonu
 source $VIMRUNTIME/vimrc_example.vim
 source $VIMRUNTIME/mswin.vim
 behave mswin
+" "}}}
 
-" allow backspacing over everything in insert mode
-set backspace=indent,eol,start
+" Formatting "{{{
 
-" Searching
-set incsearch   " do incremental searching
-" Switch syntax highlighting on, when the terminal has colors
-" Also switch on highlighting the last used search pattern.
-"if &t_Co > 2 || has("gui_running")
-  syntax on
-  set hlsearch
-"endif
-noremap <F7> :set hls!<cr>:set hls?<cr>
-" case insensitive search unless a capital letter is used
-set ignorecase
-set smartcase
+"set nowrap
 
-" automatically read the file again when it is changed outside of Vim
-set autoread
+set tabstop=2                 " the number of space characters that will be inserted when the tab key is pressed
+set softtabstop=2             " makes the spaces feel like real tabs 
+set shiftwidth=2              " the number of space characters inserted for indentation
+set expandtab                 " insert space characters whenever the tab key is pressed
+
+set backspace=indent          " allow backspacing over everything in insert mode
+set backspace+=eol
+set backspace+=start
+
+set autoindent                " always set autoindenting on
+" "}}}
+
 
 " open and maximize the split above the current one
 map <C-K> <C-W>k<C-W>_
@@ -38,15 +48,74 @@ map <C-J> <C-W>j<C-W>_
 set wmh =0 
 
 
-" Whitespace stuff
-"set nowrap
-set expandtab         " insert space characters whenever the tab key is pressed
-set tabstop=2         " the number of space characters that will be inserted when the tab key is pressed
-set shiftwidth=2      " the number of space characters inserted for indentation
-" This makes the backspace key treat the four spaces like a tab (so one backspace goes back a full 4 spaces).  
-set softtabstop=2   " makes the spaces feel like real tabs 
+" Visual "{{{
+syntax on                     " Switch syntax highlighting on, when the terminal has colors
+
+" fileformat (three characters only)
+function! Statusline_fileformat()
+  if &fileformat == ""
+    return "--"
+  else
+    return &fileformat
+  endif
+
+endfunction
+
+" fileencoding (three characters only)
+function! Statusline_fileencoding()
+  if &fileencoding == ""
+    if &encoding != ""
+      return &encoding
+    else
+      return "--"
+    endif
+  else
+    return &fileencoding
+  endif
+endfunction
+
+" file type
+function! Statusline_filetype()
+  if &filetype == ""
+    return "--"
+  else
+    return &filetype
+  endif
+endfunction
+
+function! Statusline_fileinfo()
+
+  return Statusline_fileformat() . ":" .
+    \  Statusline_fileencoding() . ":" .
+    \  Statusline_filetype()
+
+endfunction
 
 
+set laststatus=2              " always show status line.
+set showcmd                   " display an incomplete command in statusline
+
+set statusline=%<%F%m%r%h%w\ \[%{Statusline_fileinfo()}\]\ %=[ascii=\%03.3b]\[hex=0x%B]\ \ %l,%v\ %p%%\ %LL
+
+
+set foldenable                " Turn on folding
+set foldmethod=marker         " Fold on the marker
+set foldlevel=100             " Don't autofold anything (but I can still fold manually)
+
+set foldopen=block,hor,tag    " what movements open folds
+set foldopen+=percent,mark
+set foldopen+=quickfix
+
+" display unprintable characters
+set listchars=tab:\ ·,eol:¬
+set listchars+=trail:·
+set listchars+=extends:»,precedes:«
+
+" "}}}
+
+ab #e # encoding: UTF-8
+
+" AutoCommands " {{{
 " Only do this part when compiled with support for autocommands.
 if has("autocmd")
 
@@ -86,63 +155,8 @@ if has("autocmd")
 
   "augroup END
 
-else
-
-  set autoindent    " always set autoindenting on
-
 endif " has("autocmd") 
-
-"--------- statusline 
-" fileformat (three characters only)
-function! Statusline_fileformat()
-  if &fileformat == ""
-    return "--"
-  else
-    return &fileformat
-  endif
-
-endfunction
-
-" fileencoding (three characters only)
-function! Statusline_fileencoding()
-  if &fileencoding == ""
-    if &encoding != ""
-      return &encoding
-    else
-      return "--"
-    endif
-  else
-    return &fileencoding
-  endif
-endfunction
-
-" file type
-function! Statusline_filetype()
-  if &filetype == ""
-    return "--"
-  else
-    return &filetype
-  endif
-endfunction
-
-function! Statusline_fileinfo()
-
-  return Statusline_fileformat() . ":" .
-    \  Statusline_fileencoding() . ":" .
-    \  Statusline_filetype()
-
-endfunction 
-
-
-set laststatus=2             " always show status line.
-set showcmd                   " display an incomplete command in statusline
-
-":set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [ASCII=\%03.3b]\[HEX=\%02.2B]\ [POS=%04l,%04v][%p%%]\ [LEN=%L]
-":set statusline=%f%m%r%h%w\ \[%{Statusline_fileinfo()}\]\ [ascii=\%03.3b]\[hex=\%02.2B]\ \%05(%l%),%v\ %p%%\ %LL
-set statusline=%<%F%m%r%h%w\ \[%{Statusline_fileinfo()}\]\ %=[ascii=\%03.3b]\[hex=0x%B]\ \ %l,%v\ %p%%\ %LL
-":set statusline=%<%f%h%m%r%=%b\ 0x%B\ \ %l,%c%V\ %P
-":set statusline=%<%F%h%m%r%h%w%y\ %{&ff}\ %{strftime(\"%c\",getftime(expand(\"%:p\")))}%=\ lin:%l\,%L\ col:%c%V\ pos:%o\ ascii:%b\ %P
-
+" "}}}
 
 "---------Autocompletion----------------------------
 
@@ -189,6 +203,7 @@ Bundle 'scrooloose/nerdtree'
 map <F2> :NERDTreeToggle<CR>
 
 Bundle 'scrooloose/nerdcommenter'
+Bundle 'tsaleh/vim-align'
 
 " Spell files
 set rtp+=~/.vim/bundle/spellfiles/
