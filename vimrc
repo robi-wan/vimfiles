@@ -8,6 +8,9 @@ set autoread                  " automatically read the file again when it is cha
 
 set hidden                    " The current buffer can be put to the background without writing to disk
 
+set clipboard+=unnamed         " Yanks go on clipboard instead.
+set clipboard+=unnamedplus     " Yanks go on clipboard instead.
+
 " Searching
 set incsearch                 " do incremental searching
 set hlsearch                  " switch on highlighting the last used search pattern
@@ -112,8 +115,6 @@ set listchars+=trail:·
 set listchars+=extends:»,precedes:«
 
 " "}}}
-
-ab #e # encoding: UTF-8
 
 " AutoCommands " {{{
 " Only do this part when compiled with support for autocommands.
