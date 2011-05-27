@@ -182,8 +182,11 @@ autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
 filetype off
 runtime macros/matchit.vim
 " Vundle
-set rtp+=~/.vim/vundle.git/ 
+set rtp+=~/.vim/bundle/vundle/ 
 call vundle#rc()
+
+" let Vundle manage Vundle
+Bundle 'gmarik/vundle'
 
 " Programming
 Bundle 'tpope/vim-endwise'

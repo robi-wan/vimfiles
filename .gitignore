@@ -1,1 +1,10 @@
+## EMACS
+*~
+\#*
+.\#*
+
+## VIM
+*.swp
+
+## PROJECT
 bundle

@@ -33,7 +33,7 @@ again inside your `~/.vim` directory.
 
 To update to the latest version of this distribution, just run `rake upgrade` inside your `~/.vim` directory.
 
-To update the installed plugins, run `:BundleInstall` inside `vim`.
+To update the installed plugins, run `:BundleInstall!` inside `vim`.
 
 # Intro to VIM
 

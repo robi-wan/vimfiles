@@ -70,11 +70,14 @@ task :pull do
   system "git pull"
 end
 
-task :update do
-  system "git submodule update --init"
+task :vundle do
+  dir = "bundle/vundle"
+  unless File.exists?(File.expand_path( dir ))
+    system "git clone http://github.com/gmarik/vundle.git #{dir}"
+  end
 end
 
-task :default => [:update, :link_vimrc]
+task :default => [:vundle, :link_vimrc]
 
 desc "Upgrade"
 task :upgrade => [:pull, :default]
