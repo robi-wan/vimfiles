@@ -28,6 +28,7 @@ behave mswin
 " Formatting "{{{
 
 "set nowrap
+set linebreak                 " wrap long lines at words not characters
 
 set tabstop=2                 " the number of space characters that will be inserted when the tab key is pressed
 set softtabstop=2             " makes the spaces feel like real tabs 
@@ -196,6 +197,7 @@ Bundle 'tpope/vim-rails'
 
 " Colorscheme
 Bundle 'robi-wan/vim-railscasts-theme'
+Bundle 'altercation/vim-colors-solarized'
 colorscheme railscasts
 
 " Snippets
@@ -204,8 +206,6 @@ Bundle 'msanders/snipmate.vim'
 " Syntax highlight
 Bundle 'autoit.vim'
 Bundle 'pangloss/vim-javascript'
-"Bundle 'ruby-matchit'
-"Bundle 'python_match.vim'
 Bundle 'kchmck/vim-coffee-script'
 
 " Git integration
@@ -220,6 +220,11 @@ Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-repeat'
 Bundle 'scrooloose/nerdtree'
 map <F2> :NERDTreeToggle<CR>
+
+Bundle 'Conque-Shell'
+
+" Graphical undo (relies on python 2.4+)
+Bundle 'sjl/gundo.vim'
 
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'tsaleh/vim-align'
