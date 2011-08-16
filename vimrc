@@ -103,6 +103,19 @@ set showcmd                   " display an incomplete command in statusline
 
 set statusline=%<%F%m%r%h%w\ \[%{Statusline_fileinfo()}\]\ %=[ascii=\%03.3b]\[hex=0x%B]\ \ %l,%v\ %p%%\ %LL
 
+function! ToggleNumber()    
+  if &number        
+    set nonumber        
+    set relativenumber    
+  elseif &relativenumber        
+    set number        
+    set norelativenumber    
+  else        
+    set number    
+  endif
+endfunction 
+noremap <silent> <F6>        :call ToggleNumber()<CR>
+inoremap <silent> <F6> <C-o> :call ToggleNumber()<CR>
 
 set foldenable                " Turn on folding
 set foldmethod=marker         " Fold on the marker
