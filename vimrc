@@ -2,7 +2,7 @@
 set nocompatible              " Use Vim settings, rather then Vi settings (much better!).
                               " This must be first, because it changes other options as a side effect.
 
-set history=256               " Number of things to remember in history.
+set history=500               " Number of things to remember in history.
 
 set autoread                  " automatically read the file again when it is changed outside of Vim
 
