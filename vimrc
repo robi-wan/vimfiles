@@ -125,6 +125,15 @@ set foldopen=block,hor,tag    " what movements open folds
 set foldopen+=percent,mark
 set foldopen+=quickfix
 
+if has('windows')
+  set splitbelow
+endif
+
+if has('vertsplit')
+  set splitright
+endif
+
+
 " display unprintable characters
 set listchars=tab:\ ·,eol:¬
 set listchars+=trail:·
