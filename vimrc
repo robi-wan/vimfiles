@@ -156,6 +156,8 @@ if has("autocmd")
 
   " Automatically load .vimrc source when saved
   au BufWritePost .vimrc source $MYVIMRC
+  au BufWritePost _vimrc source $MYVIMRC
+  au BufWritePost vimrc source $MYVIMRC
 
   "augroup END
 
@@ -164,19 +166,21 @@ endif " has("autocmd")
 
 "---------Autocompletion----------------------------
 
-autocmd FileType python set omnifunc=pythoncomplete#Complete
-autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
-autocmd FileType css set omnifunc=csscomplete#CompleteCSS
-autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
-autocmd FileType php set omnifunc=phpcomplete#CompletePHP
-autocmd FileType c set omnifunc=ccomplete#Complete
-" ruby
-" Place 'msvcrt-ruby18.dll' in c:\Program Files (x86)\vim\vim73\
-autocmd FileType ruby,eruby set omnifunc=rubycomplete#Complete
-autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
-autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
-autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
+if has("autocmd")
+  autocmd FileType python set omnifunc=pythoncomplete#Complete
+  autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
+  autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
+  autocmd FileType css set omnifunc=csscomplete#CompleteCSS
+  autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
+  autocmd FileType php set omnifunc=phpcomplete#CompletePHP
+  autocmd FileType c set omnifunc=ccomplete#Complete
+  " ruby
+  " Place 'msvcrt-ruby18.dll' in c:\Program Files (x86)\vim\vim73\
+  autocmd FileType ruby,eruby set omnifunc=rubycomplete#Complete
+  autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
+  autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
+  autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
+endif
 
 " Scripts and Bundles " {{{
 filetype off
@@ -201,6 +205,7 @@ Bundle 'tpope/vim-rails'
 " Colorscheme
 Bundle 'robi-wan/vim-railscasts-theme'
 Bundle 'altercation/vim-colors-solarized'
+let g:solarized_menu=0
 colorscheme railscasts
 
 " Snippets
