@@ -11,6 +11,8 @@ set hidden                    " The current buffer can be put to the background 
 set clipboard+=unnamed         " Yanks go on clipboard instead.
 set clipboard+=unnamedplus     " Yanks go on clipboard instead.
 
+set directory=.,$TEMP          " set directory names for swap files
+
 " Searching
 set incsearch                 " do incremental searching
 set hlsearch                  " switch on highlighting the last used search pattern
