@@ -1,6 +1,91 @@
-" General "{{{
+" vimrc of robi-wan
+
+if v:progname =~? "evim"
+  finish
+endif
+
 set nocompatible              " Use Vim settings, rather then Vi settings (much better!).
                               " This must be first, because it changes other options as a side effect.
+
+" Scripts and Bundles " {{{
+filetype off                  " Required
+
+runtime macros/matchit.vim
+" Vundle
+set rtp+=~/.vim/bundle/vundle/ 
+call vundle#rc()
+
+" let Vundle manage Vundle
+Bundle 'gmarik/vundle'
+
+" Programming
+Bundle 'tpope/vim-endwise'
+Bundle 'tpope/vim-rails'
+" syntastic syntax checking, enable with :SyntasticEnable
+" for ruby: ruby must be reachable via shell
+"Bundle 'scrooloose/syntastic'
+"let g:syntastic_enable_signs=1          " tell syntastic to use the |:sign| interface to mark syntax errors
+"let g:syntastic_quiet_warnings=1        " show just errors, not warnings
+
+
+" Colorscheme
+Bundle 'robi-wan/vim-railscasts-theme'
+Bundle 'altercation/vim-colors-solarized'
+let g:solarized_menu=0
+colorscheme railscasts
+
+" Snippets
+Bundle 'msanders/snipmate.vim'
+
+" Syntax highlight
+Bundle 'autoit.vim'
+Bundle 'pangloss/vim-javascript'
+Bundle 'kchmck/vim-coffee-script'
+
+" Git integration
+Bundle 'tpope/vim-git'
+Bundle 'tpope/vim-fugitive'
+
+" (HT|X)ml tool
+Bundle 'ragtag.vim'
+
+" Utility
+Bundle 'tpope/vim-surround'
+Bundle 'tpope/vim-repeat'
+Bundle 'scrooloose/nerdtree'
+map <F2> :NERDTreeToggle<CR>
+
+Bundle 'Conque-Shell'
+
+" Graphical undo (relies on python 2.4+)
+Bundle 'sjl/gundo.vim'
+
+Bundle 'scrooloose/nerdcommenter'
+Bundle 'tsaleh/vim-align'
+Bundle 'ervandew/supertab'
+Bundle 'ZoomWin'
+Bundle 'michaeljsmith/vim-indent-object'
+Bundle 'tpope/vim-unimpaired'
+" Unimpaired configuration
+" Bubble single lines
+nmap <C-Up> [e
+nmap <C-Down> ]e
+" Bubble multiple lines
+vmap <C-Up> [egv
+vmap <C-Down> ]egv
+
+Bundle 'dahu/VimLint'
+
+if has("autocmd")
+  filetype plugin indent on      " Automatically detect file types.
+endif
+
+" Spell files
+set rtp+=~/.vim/bundle/spellfiles/
+" "}}}
+
+
+" General "{{{
 
 set history=500               " Number of things to remember in history.
 
@@ -11,7 +96,7 @@ set hidden                    " The current buffer can be put to the background 
 set clipboard+=unnamed         " Yanks go on clipboard instead.
 set clipboard+=unnamedplus     " Yanks go on clipboard instead.
 
-set directory=.,$TEMP          " set directory names for swap files
+set directory+=$TEMP           " set directory names for swap files
 
 " Searching
 set incsearch                 " do incremental searching
@@ -22,10 +107,12 @@ set smartcase                 " case insensitive search unless a capital letter 
 
 
 set number                    " disable with set nonumber or short set nonu
-source $VIMRUNTIME/vimrc_example.vim
-source $VIMRUNTIME/mswin.vim
-behave mswin
+if (has('win32') || has('win64')) 
+  source $VIMRUNTIME/mswin.vim
+  behave mswin
+end
 " "}}}
+
 
 " Formatting "{{{
 
@@ -99,7 +186,10 @@ endfunction
 
 
 set laststatus=2              " always show status line.
-set showcmd                   " display an incomplete command in statusline
+if has('cmdline_info')
+  set ruler                   " Always show cursor position.
+  set showcmd                 " display an incomplete command in statusline
+endif
 
 set statusline=%<%F%m%r%h%w\ \[%{Statusline_fileinfo()}\]\ %=[ascii=\%03.3b]\[hex=0x%B]\ \ %l,%v\ %p%%\ %LL
 
@@ -167,7 +257,7 @@ if has("autocmd")
   au BufNewFile,BufRead *.json set ft=javascript
 
   " For all text files set 'textwidth' to 78 characters.
-  "au FileType text setlocal tw=78
+  "au FileType text setlocal textwidth=78
 
   " When editing a file, always jump to the last known cursor position.
   " Don't do it when the position is invalid or when inside an event handler
@@ -181,7 +271,7 @@ if has("autocmd")
   " Automatically load .vimrc source when saved
   au BufWritePost .vimrc source $MYVIMRC
   au BufWritePost _vimrc source $MYVIMRC
-  au BufWritePost vimrc source $MYVIMRC
+  "au BufWritePost vimrc source $MYVIMRC
 
   "augroup END
 
@@ -206,77 +296,6 @@ if has("autocmd")
   autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
 endif
 
-" Scripts and Bundles " {{{
-filetype off
-runtime macros/matchit.vim
-" Vundle
-set rtp+=~/.vim/bundle/vundle/ 
-call vundle#rc()
-
-" let Vundle manage Vundle
-Bundle 'gmarik/vundle'
-
-" Programming
-Bundle 'tpope/vim-endwise'
-Bundle 'tpope/vim-rails'
-" syntastic syntax checking, enable with :SyntasticEnable
-" for ruby: ruby must be reachable via shell
-"Bundle 'scrooloose/syntastic'
-"let g:syntastic_enable_signs=1          " tell syntastic to use the |:sign| interface to mark syntax errors
-"let g:syntastic_quiet_warnings=1        " show just errors, not warnings
-
-
-" Colorscheme
-Bundle 'robi-wan/vim-railscasts-theme'
-Bundle 'altercation/vim-colors-solarized'
-let g:solarized_menu=0
-colorscheme railscasts
-
-" Snippets
-Bundle 'msanders/snipmate.vim'
-
-" Syntax highlight
-Bundle 'autoit.vim'
-Bundle 'pangloss/vim-javascript'
-Bundle 'kchmck/vim-coffee-script'
-
-" Git integration
-Bundle 'tpope/vim-git'
-Bundle 'tpope/vim-fugitive'
-
-" (HT|X)ml tool
-Bundle 'ragtag.vim'
-
-" Utility
-Bundle 'tpope/vim-surround'
-Bundle 'tpope/vim-repeat'
-Bundle 'scrooloose/nerdtree'
-map <F2> :NERDTreeToggle<CR>
-
-Bundle 'Conque-Shell'
-
-" Graphical undo (relies on python 2.4+)
-Bundle 'sjl/gundo.vim'
-
-Bundle 'scrooloose/nerdcommenter'
-Bundle 'tsaleh/vim-align'
-Bundle 'ervandew/supertab'
-Bundle 'ZoomWin'
-Bundle 'michaeljsmith/vim-indent-object'
-Bundle 'tpope/vim-unimpaired'
-" Unimpaired configuration
-" Bubble single lines
-nmap <C-Up> [e
-nmap <C-Down> ]e
-" Bubble multiple lines
-vmap <C-Up> [egv
-vmap <C-Down> ]egv
-
-filetype plugin indent on      " Automatically detect file types.
-
-" Spell files
-set rtp+=~/.vim/bundle/spellfiles/
-" "}}}
 
 " tip from http://vimcasts.org/episodes/tidying-whitespace/
 function! Preserve(command)
@@ -296,8 +315,27 @@ nmap _$ :call Preserve("%s/\\s\\+$//e")<CR>
 " auto-indent the whole file
 nmap _= :call Preserve("normal gg=G")<CR>
 
+if !exists(":DiffOrig")
+  command DiffOrig vert new | set bt=nofile | r ++edit # | 0d_ | diffthis
+		  \ | wincmd p | diffthis
+endif
 
 " Include local vim config
 if filereadable(".vimrc.local")
   source .vimrc.local
 endif
+
+" leftovers from vimrc_example.vim {{{
+
+" Don't use Ex mode, use Q for formatting 
+"map Q gq
+
+" CTRL-U in insert mode deletes a lot.  Use CTRL-G u to first break undo,
+" so that you can undo CTRL-U after inserting a line break. 
+"inoremap <C-U> <C-G>u<C-U>
+
+" In many terminal emulators the mouse works just fine, thus enable it.
+"if has('mouse')
+  "set mouse=a
+"endi
+" }}}
