@@ -27,6 +27,9 @@ Bundle 'tpope/vim-rails'
 "let g:syntastic_enable_signs=1          " tell syntastic to use the |:sign| interface to mark syntax errors
 "let g:syntastic_quiet_warnings=1        " show just errors, not warnings
 
+" adding this, because ruby.vim bundled with vim gives errors (Gem.all_load_paths is
+" deprecated in current rubygems)
+Bundle 'vim-ruby/vim-ruby'
 
 " Colorscheme
 Bundle 'robi-wan/vim-railscasts-theme'
@@ -74,7 +77,18 @@ nmap <C-Down> ]e
 vmap <C-Up> [egv
 vmap <C-Down> ]egv
 
-Bundle 'dahu/VimLint'
+"Bundle 'dahu/VimLint'
+
+" resize windows according to golden ratio
+" :GoldenRatioResize, :GoldenRatioToggle
+Bundle 'roman/golden-ratio'
+
+" automatic closing of quotes, parenthesis, brackets, etc.
+Bundle 'Raimondi/delimitMate'
+
+" visually displaying indent levels: 
+" activate with <Leader>ig :IndentGuideToggles
+Bundle 'nathanaelkane/vim-indent-guides'
 
 if has("autocmd")
   filetype plugin indent on      " Automatically detect file types.
@@ -257,7 +271,7 @@ if has("autocmd")
   au BufNewFile,BufRead *.json set ft=javascript
 
   " For all text files set 'textwidth' to 78 characters.
-  "au FileType text setlocal textwidth=78
+  au FileType text setlocal textwidth=78
 
   " When editing a file, always jump to the last known cursor position.
   " Don't do it when the position is invalid or when inside an event handler
