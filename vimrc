@@ -55,6 +55,7 @@ Bundle 'ragtag.vim'
 " Utility
 Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-repeat'
+Bundle 'tpope/vim-abolish'
 Bundle 'scrooloose/nerdtree'
 map <F2> :NERDTreeToggle<CR>
 
