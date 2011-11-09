@@ -12,7 +12,7 @@ filetype off                  " Required
 
 runtime macros/matchit.vim
 " Vundle
-set rtp+=~/.vim/bundle/vundle/ 
+set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
 " let Vundle manage Vundle
@@ -90,7 +90,7 @@ Bundle 'roman/golden-ratio'
 " automatic closing of quotes, parenthesis, brackets, etc.
 Bundle 'Raimondi/delimitMate'
 
-" visually displaying indent levels: 
+" visually displaying indent levels:
 " activate with <Leader>ig :IndentGuideToggles
 Bundle 'nathanaelkane/vim-indent-guides'
 
@@ -135,7 +135,7 @@ set smartcase                 " case insensitive search unless a capital letter 
 
 
 set number                    " disable with set nonumber or short set nonu
-if (has('win32') || has('win64')) 
+if (has('win32') || has('win64'))
   source $VIMRUNTIME/mswin.vim
   behave mswin
 end
@@ -148,7 +148,7 @@ end
 set linebreak                 " wrap long lines at words not characters
 
 set tabstop=2                 " the number of space characters that will be inserted when the tab key is pressed
-set softtabstop=2             " makes the spaces feel like real tabs 
+set softtabstop=2             " makes the spaces feel like real tabs
 set shiftwidth=2              " the number of space characters inserted for indentation
 set expandtab                 " insert space characters whenever the tab key is pressed
 
@@ -221,17 +221,17 @@ endif
 
 set statusline=%<%F%m%r%h%w\ \[%{Statusline_fileinfo()}\]\ %=[ascii=\%03.3b]\[hex=0x%B]\ \ %l,%v\ %p%%\ %LL
 
-function! ToggleNumber()    
-  if &number        
-    set nonumber        
-    set relativenumber    
-  elseif &relativenumber        
-    set number        
-    set norelativenumber    
-  else        
-    set number    
+function! ToggleNumber()
+  if &number
+    set nonumber
+    set relativenumber
+  elseif &relativenumber
+    set number
+    set norelativenumber
+  else
+    set number
   endif
-endfunction 
+endfunction
 noremap <silent> <F6>        :call ToggleNumber()<CR>
 inoremap <silent> <F6> <C-o> :call ToggleNumber()<CR>
 
@@ -338,7 +338,7 @@ function! Preserve(command)
   call cursor(l, c)
 endfunction
 
-" strip trailing whitespaces 
+" strip trailing whitespaces
 nmap _$ :call Preserve("%s/\\s\\+$//e")<CR>
 " auto-indent the whole file
 nmap _= :call Preserve("normal gg=G")<CR>
@@ -355,11 +355,11 @@ endif
 
 " leftovers from vimrc_example.vim {{{
 
-" Don't use Ex mode, use Q for formatting 
+" Don't use Ex mode, use Q for formatting
 "map Q gq
 
 " CTRL-U in insert mode deletes a lot.  Use CTRL-G u to first break undo,
-" so that you can undo CTRL-U after inserting a line break. 
+" so that you can undo CTRL-U after inserting a line break.
 "inoremap <C-U> <C-G>u<C-U>
 
 " In many terminal emulators the mouse works just fine, thus enable it.
