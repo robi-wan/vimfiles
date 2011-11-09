@@ -166,7 +166,7 @@ map <C-K> <C-W>k<C-W>_
 map <C-J> <C-W>j<C-W>_
 " allow splits to reduce their size to a single line (which includes the
 " filename and position)
-set wmh =0 
+set winminheight =0
 
 
 " Visual "{{{
