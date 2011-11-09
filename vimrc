@@ -69,6 +69,8 @@ Bundle 'scrooloose/nerdcommenter'
 Bundle 'tsaleh/vim-align'
 Bundle 'ervandew/supertab'
 Bundle 'ZoomWin'
+map <Leader><Leader> :ZoomWin<CR>
+
 Bundle 'michaeljsmith/vim-indent-object'
 Bundle 'tpope/vim-unimpaired'
 " Unimpaired configuration
