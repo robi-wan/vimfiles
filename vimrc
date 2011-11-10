@@ -41,6 +41,7 @@ colorscheme railscasts
 
 " Snippets
 Bundle 'msanders/snipmate.vim'
+Bundle 'honza/snipmate-snippets'
 
 " Syntax highlight
 Bundle 'autoit.vim'
