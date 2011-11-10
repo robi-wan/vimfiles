@@ -37,7 +37,6 @@ Bundle 'nelstrom/vim-textobj-rubyblock'
 " Colorscheme
 Bundle 'robi-wan/vim-railscasts-theme'
 Bundle 'altercation/vim-colors-solarized'
-let g:solarized_menu=0
 colorscheme railscasts
 
 " Snippets
