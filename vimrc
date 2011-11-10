@@ -266,66 +266,50 @@ set listchars+=extends:»,precedes:«
 " Only do this part when compiled with support for autocommands.
 if has("autocmd")
 
-  " Enable file type detection.
-  " Use the default filetype settings, so that mail gets 'tw' set to 72,
-  " 'cindent' is on in C files, etc.
-  " Also load indent files, to automatically do language-dependent indenting.
-  "filetype plugin indent on
+  augroup FTCheck " {{{2
+    autocmd!
+    " Thorfile, Rakefile, Vagrantfile and Gemfile are Ruby
+    autocmd BufRead,BufNewFile {Gemfile,Rakefile,Vagrantfile,Thorfile,config.ru}    set ft=ruby
 
-  " make uses real tabs
-  au FileType make set noexpandtab
-  
-  " Thorfile, Rakefile, Vagrantfile and Gemfile are Ruby
-  au BufRead,BufNewFile {Gemfile,Rakefile,Vagrantfile,Thorfile,config.ru}    set ft=ruby
-  
-  " make python follow PEP8 ( http://www.python.org/dev/peps/pep-0008/ )
-  au FileType python set softtabstop=4 tabstop=4 shiftwidth=4 textwidth=79
+    " Set File type to 'text' for files ending in .txt
+    autocmd BufNewFile,BufRead *.txt set ft=text
 
-  " Set File type to 'text' for files ending in .txt
-  au BufNewFile,BufRead *.txt setfiletype text
+    " add json syntax highlighting
+    autocmd BufNewFile,BufRead *.json set ft=javascript
+  augroup END " }}}2
 
-  " add json syntax highlighting
-  au BufNewFile,BufRead *.json set ft=javascript
+  augroup FTOptions " {{{ 2
+    autocmd!
+    " make uses real tabs
+    autocmd FileType make set noexpandtab
 
-  " For all text files set 'textwidth' to 78 characters.
-  au FileType text setlocal textwidth=78
+    " make python follow PEP8 ( http://www.python.org/dev/peps/pep-0008/ )
+    autocmd FileType python set softtabstop=4 tabstop=4 shiftwidth=4 textwidth=79
 
-  " When editing a file, always jump to the last known cursor position.
-  " Don't do it when the position is invalid or when inside an event handler
-  " (happens when dropping a file on gvim).
-  au BufReadPost *
-    \ if line("'\"") > 0 && line("'\"") <= line("$") |
-    \   exe "normal g`\"" |
-    \ endif
+    " For all text files set 'textwidth' to 78 characters.
+    autocmd FileType text setlocal textwidth=78
 
+    " When editing a file, always jump to the last known cursor position.
+    " Don't do it when the position is invalid or when inside an event handler
+    " (happens when dropping a file on gvim).
+    autocmd BufReadPost *
+          \ if line("'\"") > 0 && line("'\"") <= line("$") |
+          \   exe "normal g`\"" |
+          \ endif
 
-  " Automatically load .vimrc source when saved
-  au BufWritePost .vimrc source $MYVIMRC
-  au BufWritePost _vimrc source $MYVIMRC
-  "au BufWritePost vimrc source $MYVIMRC
+    " Automatically load .vimrc source when saved
+    autocmd BufWritePost .vimrc source $MYVIMRC
+    autocmd BufWritePost _vimrc source $MYVIMRC
+    "autocmd BufWritePost vimrc source $MYVIMRC
 
-  "augroup END
+    "---------Autocompletion----------------------------
+    autocmd FileType * if exists("+omnifunc") && &omnifunc == "" | setlocal omnifunc=syntaxcomplete#Complete | endif
+    autocmd FileType * if exists("+completefunc") && &completefunc == "" | setlocal completefunc=syntaxcomplete#Complete | endif
+  augroup END " }}}2
 
-endif " has("autocmd") 
-" "}}}
+endif " has("autocmd")
+" }}}
 
-"---------Autocompletion----------------------------
-
-if has("autocmd")
-  autocmd FileType python set omnifunc=pythoncomplete#Complete
-  autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
-  autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
-  autocmd FileType css set omnifunc=csscomplete#CompleteCSS
-  autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
-  autocmd FileType php set omnifunc=phpcomplete#CompletePHP
-  autocmd FileType c set omnifunc=ccomplete#Complete
-  " ruby
-  " Place 'msvcrt-ruby18.dll' in c:\Program Files (x86)\vim\vim73\
-  autocmd FileType ruby,eruby set omnifunc=rubycomplete#Complete
-  autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
-  autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
-  autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
-endif
 
 
 " tip from http://vimcasts.org/episodes/tidying-whitespace/
