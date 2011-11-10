@@ -31,6 +31,9 @@ Bundle 'tpope/vim-rails'
 " deprecated in current rubygems)
 Bundle 'vim-ruby/vim-ruby'
 
+Bundle 'kana/vim-textobj-user'
+Bundle 'nelstrom/vim-textobj-rubyblock'
+
 " Colorscheme
 Bundle 'robi-wan/vim-railscasts-theme'
 Bundle 'altercation/vim-colors-solarized'
