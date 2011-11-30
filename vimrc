@@ -48,6 +48,7 @@ Bundle 'autoit.vim'
 Bundle 'pangloss/vim-javascript'
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'tmatilai/gitolite.vim'
+Bundle 'kusnier/vim-mediawiki'
 
 " Git integration
 Bundle 'tpope/vim-git'
