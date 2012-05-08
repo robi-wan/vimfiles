@@ -37,6 +37,7 @@ Bundle 'nelstrom/vim-textobj-rubyblock'
 " Colorscheme
 Bundle 'robi-wan/vim-railscasts-theme'
 Bundle 'altercation/vim-colors-solarized'
+Bundle 'robi-wan/vim-github-theme'
 colorscheme railscasts
 
 " Snippets
@@ -64,7 +65,10 @@ Bundle 'tpope/vim-abolish'
 Bundle 'scrooloose/nerdtree'
 map <F2> :NERDTreeToggle<CR>
 
-Bundle 'Conque-Shell'
+Bundle 'sickill/vim-pasta'
+
+" Conque-Shell, see https://github.com/gmarik/vundle/issues/153
+Bundle 'rson/vim-conque'
 
 " Graphical undo (relies on python 2.4+)
 Bundle 'sjl/gundo.vim'
