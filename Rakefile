@@ -14,16 +14,12 @@ task :spell_files do
   dest = File.expand_path("~/.vim/bundle/spellfiles/spell")
   FileUtils.mkdir_p(dest) unless File.exist?(dest)
   FileUtils.cd(dest) do  
-    #lang = %w[ de ]
-    #enc = %w[ latin1 utf-8 ]
-    #suffix = %w[ spl sug ]
     require 'net/ftp'
     Net::FTP.open('ftp.nluug.nl') do |ftp|
+      ftp.passive = true
       ftp.login
       files = ftp.chdir('pub/vim/runtime/spell')
       %w[ de.latin1.spl de.latin1.sug de.utf-8.spl de.utf-8.sug ].each do |file|
-      #lang.product(enc, suffix).each do |f| 
-        #file = f.join(".")
         puts file
         ftp.getbinaryfile(file)
       end
