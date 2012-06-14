@@ -38,6 +38,7 @@ Bundle 'nelstrom/vim-textobj-rubyblock'
 Bundle 'robi-wan/vim-railscasts-theme'
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'robi-wan/vim-github-theme'
+Bundle 'tpope/vim-vividchalk'
 colorscheme railscasts
 
 " Snippets
@@ -46,6 +47,7 @@ Bundle 'honza/snipmate-snippets'
 
 " Syntax highlight
 Bundle 'autoit.vim'
+Bundle 'hail2u/vim-css3-syntax'
 Bundle 'pangloss/vim-javascript'
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'tmatilai/gitolite.vim'
