@@ -52,6 +52,7 @@ Bundle 'pangloss/vim-javascript'
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'tmatilai/gitolite.vim'
 Bundle 'kusnier/vim-mediawiki'
+Bundle 'PProvost/vim-ps1.git'
 
 " Git integration
 Bundle 'tpope/vim-git'
