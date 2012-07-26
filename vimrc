@@ -68,13 +68,21 @@ Bundle 'tpope/vim-abolish'
 Bundle 'scrooloose/nerdtree'
 map <F2> :NERDTreeToggle<CR>
 
+" Tagbar requires ctags
+if executable("ctags")
+    Bundle 'majutsushi/tagbar'
+    map <Leader>rt :TagbarToggle<CR>
+endif
+
 Bundle 'sickill/vim-pasta'
 
 " Conque-Shell, see https://github.com/gmarik/vundle/issues/153
 Bundle 'rson/vim-conque'
 
 " Graphical undo (relies on python 2.4+)
+if has("python")
     Bundle 'sjl/gundo.vim'
+endif
 
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'tsaleh/vim-align'
@@ -343,6 +351,9 @@ endfunction
 nmap _$ :call Preserve("%s/\\s\\+$//e")<CR>
 " auto-indent the whole file
 nmap _= :call Preserve("normal gg=G")<CR>
+
+" Underline the current line with '='
+nmap <silent> <leader>ul :t.\|s/./=/g\|:nohls<cr>
 
 if !exists(":DiffOrig")
   command DiffOrig vert new | set bt=nofile | r ++edit # | 0d_ | diffthis
