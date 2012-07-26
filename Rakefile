@@ -42,7 +42,7 @@ end
 
 def mklink(link, target)
   [ link, target ].each { |path| path.gsub!("/","\\") }
-  system("cmd /c mklink #{link} #{target}")
+  system("cmd /c mklink \"#{link}\" \"#{target}\"")
 end
 
 desc "link vimrc to ~/.vimrc"
