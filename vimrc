@@ -74,7 +74,7 @@ Bundle 'sickill/vim-pasta'
 Bundle 'rson/vim-conque'
 
 " Graphical undo (relies on python 2.4+)
-Bundle 'sjl/gundo.vim'
+    Bundle 'sjl/gundo.vim'
 
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'tsaleh/vim-align'
@@ -97,6 +97,7 @@ vmap <C-Down> ]egv
 " resize windows according to golden ratio
 " :GoldenRatioResize, :GoldenRatioToggle
 Bundle 'roman/golden-ratio'
+let g:golden_ratio_autocommand = 0
 
 " automatic closing of quotes, parenthesis, brackets, etc.
 Bundle 'Raimondi/delimitMate'
