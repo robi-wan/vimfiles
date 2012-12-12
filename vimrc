@@ -67,6 +67,7 @@ Bundle 'tpope/vim-repeat'
 Bundle 'tpope/vim-abolish'
 Bundle 'scrooloose/nerdtree'
 map <F2> :NERDTreeToggle<CR>
+Bundle 'kien/ctrlp.vim'
 
 " Tagbar requires ctags
 if executable("ctags")
@@ -127,11 +128,6 @@ Bundle 'jkramer/vim-checkbox'
 if has("autocmd")
   filetype plugin indent on      " Automatically detect file types.
 endif
-
-" see https://github.com/gmarik/vundle/issues/146
-if (has('win32') || has('win64'))
-  set shellxquote=
-end
 
 " Spell files
 set rtp+=~/.vim/bundle/spellfiles/
