@@ -132,15 +132,9 @@ Bundle 'Raimondi/delimitMate'
 " activate with <Leader>ig :IndentGuideToggles
 Bundle 'nathanaelkane/vim-indent-guides'
 
-Bundle 'davidoc/taskpaper.vim'
-
 " wrapper for cheat gem, requires 'gem install cheat'
 " (beware: problems under windows)
 "Bundle 'cheat.vim'
-
-" Toggling first checkbox on a line
-" <leader>tt :ToggleCB
-Bundle 'jkramer/vim-checkbox'
 
 if has("autocmd")
   filetype plugin indent on      " Automatically detect file types.
