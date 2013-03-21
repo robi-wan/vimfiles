@@ -91,6 +91,23 @@ Bundle 'ervandew/supertab'
 Bundle 'ZoomWin'
 map <Leader><Leader> :ZoomWin<CR>
 
+if has("gui_running")
+  " Install patched Consolas from https://github.com/nicolalamacchia/powerline-consolas
+  " does not play well with windows shell... so disable it there
+  Bundle 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim'}
+  Bundle 'robi-wan/powerline-config'
+  " override the config path with g:powerline_config_path
+  " (https://powerline.readthedocs.org/en/latest/configuration.html#vim-overrides)
+  let g:powerline_config_path = expand('~/.vim/bundle/powerline-config')
+
+  " This is required for powerline:
+  " https://powerline.readthedocs.org/en/latest/installation/linux.html#my-vim-statusline-has-strange-characters-like-b-in-it
+  set encoding=utf-8
+  set noshowmode                " Hide the default mode text (e.g. -- INSERT -- below the statusline)
+  " todo
+  " when powerline is enabled, supertab plugin displays  "=<SNR>58_SelectCompletion(1)" below statusline
+endif
+
 Bundle 'michaeljsmith/vim-indent-object'
 Bundle 'tpope/vim-unimpaired'
 " Unimpaired configuration
