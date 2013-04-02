@@ -133,10 +133,6 @@ Bundle 'Raimondi/delimitMate'
 " activate with <Leader>ig :IndentGuideToggles
 Bundle 'nathanaelkane/vim-indent-guides'
 
-" wrapper for cheat gem, requires 'gem install cheat'
-" (beware: problems under windows)
-"Bundle 'cheat.vim'
-
 if has("autocmd")
   filetype plugin indent on      " Automatically detect file types.
 endif
