@@ -20,7 +20,7 @@ Bundle 'gmarik/vundle'
 
 " Programming
 Bundle 'tpope/vim-endwise'
-Bundle 'tpope/vim-rails'
+"Bundle 'tpope/vim-rails'
 " syntastic syntax checking, enable with :SyntasticEnable
 " for ruby: ruby must be reachable via shell
 "Bundle 'scrooloose/syntastic'
