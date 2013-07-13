@@ -80,9 +80,6 @@ endif
 
 Bundle 'sickill/vim-pasta'
 
-" Conque-Shell, see https://github.com/gmarik/vundle/issues/153
-Bundle 'rson/vim-conque'
-
 " Graphical undo (relies on python 2.4+)
 if has("python")
     Bundle 'sjl/gundo.vim'
