@@ -7,7 +7,7 @@ endif
 set nocompatible              " Use Vim settings, rather then Vi settings (much better!).
                               " This must be first, because it changes other options as a side effect.
 
-" Scripts and Bundles " {{{
+" Scripts and Plugins " {{{
 filetype off                  " Required
 
 runtime macros/matchit.vim
@@ -16,86 +16,86 @@ set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
 " let Vundle manage Vundle
-Bundle 'gmarik/vundle'
+Plugin 'gmarik/vundle'
 
 " Programming
-Bundle 'tpope/vim-endwise'
-"Bundle 'tpope/vim-rails'
+Plugin 'tpope/vim-endwise'
+"Plugin 'tpope/vim-rails'
 " syntastic syntax checking, enable with :SyntasticEnable
 " for ruby: ruby must be reachable via shell
-"Bundle 'scrooloose/syntastic'
+"Plugin 'scrooloose/syntastic'
 "let g:syntastic_enable_signs=1          " tell syntastic to use the |:sign| interface to mark syntax errors
 "let g:syntastic_quiet_warnings=1        " show just errors, not warnings
 
 " adding this, because ruby.vim bundled with vim gives errors (Gem.all_load_paths is
 " deprecated in current rubygems)
-Bundle 'vim-ruby/vim-ruby'
+Plugin 'vim-ruby/vim-ruby'
 
-Bundle 'kana/vim-textobj-user'
-Bundle 'nelstrom/vim-textobj-rubyblock'
+Plugin 'kana/vim-textobj-user'
+Plugin 'nelstrom/vim-textobj-rubyblock'
 
 " Colorscheme
-Bundle 'robi-wan/vim-railscasts-theme'
-Bundle 'altercation/vim-colors-solarized'
-Bundle 'robi-wan/vim-github-theme'
-Bundle 'tpope/vim-vividchalk'
+Plugin 'robi-wan/vim-railscasts-theme'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'robi-wan/vim-github-theme'
+Plugin 'tpope/vim-vividchalk'
 colorscheme railscasts
 
 " Snippets
-Bundle "MarcWeber/vim-addon-mw-utils"
-Bundle "tomtom/tlib_vim"
-Bundle "garbas/vim-snipmate"
-Bundle 'honza/vim-snippets'
+Plugin 'MarcWeber/vim-addon-mw-utils'
+Plugin 'tomtom/tlib_vim'
+Plugin 'garbas/vim-snipmate'
+Plugin 'honza/vim-snippets'
 
 " Syntax highlight
-Bundle 'autoit.vim'
-Bundle 'hail2u/vim-css3-syntax'
-Bundle 'pangloss/vim-javascript'
-Bundle 'kchmck/vim-coffee-script'
-Bundle 'tpope/vim-haml'
-Bundle 'tmatilai/gitolite.vim'
-Bundle 'kusnier/vim-mediawiki'
-Bundle 'PProvost/vim-ps1.git'
+Plugin 'autoit.vim'
+Plugin 'hail2u/vim-css3-syntax'
+Plugin 'pangloss/vim-javascript'
+Plugin 'kchmck/vim-coffee-script'
+Plugin 'tpope/vim-haml'
+Plugin 'tmatilai/gitolite.vim'
+Plugin 'kusnier/vim-mediawiki'
+Plugin 'PProvost/vim-ps1.git'
 
 " Git integration
-Bundle 'tpope/vim-git'
-Bundle 'tpope/vim-fugitive'
+Plugin 'tpope/vim-git'
+Plugin 'tpope/vim-fugitive'
 
 " (HT|X)ml tool
-Bundle 'ragtag.vim'
+Plugin 'ragtag.vim'
 
 " Utility
-Bundle 'tpope/vim-surround'
-Bundle 'tpope/vim-repeat'
-Bundle 'tpope/vim-abolish'
-Bundle 'scrooloose/nerdtree'
+Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-repeat'
+Plugin 'tpope/vim-abolish'
+Plugin 'scrooloose/nerdtree'
 map <F2> :NERDTreeToggle<CR>
-Bundle 'kien/ctrlp.vim'
+Plugin 'kien/ctrlp.vim'
 
 " Tagbar requires ctags
 if executable("ctags")
-    Bundle 'majutsushi/tagbar'
+    Plugin 'majutsushi/tagbar'
     map <Leader>rt :TagbarToggle<CR>
 endif
 
-Bundle 'sickill/vim-pasta'
+Plugin 'sickill/vim-pasta'
 
 " Graphical undo (relies on python 2.4+)
 if has("python")
-    Bundle 'sjl/gundo.vim'
+    Plugin 'sjl/gundo.vim'
 endif
 
-Bundle 'scrooloose/nerdcommenter'
-Bundle 'tsaleh/vim-align'
-Bundle 'ervandew/supertab'
-Bundle 'ZoomWin'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'tsaleh/vim-align'
+Plugin 'ervandew/supertab'
+Plugin 'ZoomWin'
 map <Leader><Leader> :ZoomWin<CR>
 
 "if has("gui_running")
   "" Install patched Consolas from https://github.com/nicolalamacchia/powerline-consolas
   "" does not play well with windows shell... so disable it there
-  "Bundle 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim'}
-  "Bundle 'robi-wan/powerline-config'
+  "Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim'}
+  "Plugin 'robi-wan/powerline-config'
   "" override the config path with g:powerline_config_path
   "" (https://powerline.readthedocs.org/en/latest/configuration.html#vim-overrides)
   "let g:powerline_config_path = expand('~/.vim/bundle/powerline-config')
@@ -108,8 +108,8 @@ map <Leader><Leader> :ZoomWin<CR>
   "" when powerline is enabled, supertab plugin displays  "=<SNR>58_SelectCompletion(1)" below statusline
 "endif
 
-Bundle 'michaeljsmith/vim-indent-object'
-Bundle 'tpope/vim-unimpaired'
+Plugin 'michaeljsmith/vim-indent-object'
+Plugin 'tpope/vim-unimpaired'
 " Unimpaired configuration
 " Bubble single lines
 nmap <C-Up> [e
@@ -118,19 +118,19 @@ nmap <C-Down> ]e
 vmap <C-Up> [egv
 vmap <C-Down> ]egv
 
-"Bundle 'dahu/VimLint'
+"Plugin 'dahu/VimLint'
 
 " resize windows according to golden ratio
 " :GoldenRatioResize, :GoldenRatioToggle
-Bundle 'roman/golden-ratio'
+Plugin 'roman/golden-ratio'
 let g:golden_ratio_autocommand = 0
 
 " automatic closing of quotes, parenthesis, brackets, etc.
-Bundle 'Raimondi/delimitMate'
+Plugin 'Raimondi/delimitMate'
 
 " visually displaying indent levels:
 " activate with <Leader>ig :IndentGuideToggles
-Bundle 'nathanaelkane/vim-indent-guides'
+Plugin 'nathanaelkane/vim-indent-guides'
 
 if has("autocmd")
   filetype plugin indent on      " Automatically detect file types.
