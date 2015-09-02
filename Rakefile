@@ -67,9 +67,9 @@ task :pull do
 end
 
 task :vundle do
-  dir = "bundle/vundle"
+  dir = "bundle/Vundle.vim"
   unless File.exists?(File.expand_path( dir ))
-    system "git clone http://github.com/gmarik/vundle.git #{dir}"
+    system "git clone https://github.com/VundleVim/Vundle.vim #{dir}"
   end
 end
 

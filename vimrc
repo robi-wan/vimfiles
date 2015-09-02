@@ -12,11 +12,11 @@ filetype off                  " Required
 
 runtime macros/matchit.vim
 " Vundle
-set rtp+=~/.vim/bundle/vundle/
+set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#rc()
 
 " let Vundle manage Vundle
-Plugin 'gmarik/vundle'
+Plugin 'VundleVim/Vundle.vim'
 
 " Programming
 Plugin 'tpope/vim-endwise'
