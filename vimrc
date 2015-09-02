@@ -70,7 +70,7 @@ Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-abolish'
 Plugin 'scrooloose/nerdtree'
 map <F2> :NERDTreeToggle<CR>
-Plugin 'kien/ctrlp.vim'
+Plugin 'ctrlpvim/ctrlp.vim'
 
 " Tagbar requires ctags
 if executable("ctags")
