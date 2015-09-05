@@ -56,6 +56,7 @@ Plugin 'tpope/vim-haml'
 Plugin 'tmatilai/gitolite.vim'
 Plugin 'kusnier/vim-mediawiki'
 Plugin 'PProvost/vim-ps1.git'
+Plugin 'elixir-lang/vim-elixir'
 
 " Git integration
 Plugin 'tpope/vim-git'
