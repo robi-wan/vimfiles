@@ -144,7 +144,9 @@ set rtp+=~/.vim/bundle/spellfiles/
 
 " General "{{{
 
-set history=500               " Number of things to remember in history.
+set encoding=utf-8            " UTF-8 default encoding
+
+set history=1000              " Number of things to remember in history.
 
 set autoread                  " automatically read the file again when it is changed outside of Vim
 
