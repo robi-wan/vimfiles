@@ -72,6 +72,7 @@ Plugin 'ragtag.vim'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-abolish'
+Plugin 'tpope/vim-obsession'
 Plugin 'scrooloose/nerdtree'
 map <F2> :NERDTreeToggle<CR>
 Plugin 'ctrlpvim/ctrlp.vim'
