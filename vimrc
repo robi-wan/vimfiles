@@ -344,6 +344,12 @@ if has("autocmd")
     autocmd FileType * if exists("+completefunc") && &completefunc == "" | setlocal completefunc=syntaxcomplete#Complete | endif
   augroup END " }}}2
 
+  augroup CursorLine " {{{ 2
+    autocmd!
+    autocmd VimEnter,WinEnter,BufWinEnter * setlocal cursorline
+    autocmd WinLeave * setlocal nocursorline
+  augroup END " }}}2
+
 endif " has("autocmd")
 " }}}
 
