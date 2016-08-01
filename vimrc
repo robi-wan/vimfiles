@@ -39,6 +39,9 @@ Plugin 'robi-wan/vim-railscasts-theme'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'robi-wan/vim-github-theme'
 Plugin 'tpope/vim-vividchalk'
+Plugin 'tomasr/molokai'
+Plugin 'chriskempson/base16-vim'
+
 colorscheme railscasts
 
 " Snippets
