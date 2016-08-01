@@ -187,6 +187,9 @@ set backspace=indent          " allow backspacing over everything in insert mode
 set backspace+=eol
 set backspace+=start
 
+" https://github.com/thoughtbot/dotfiles/blob/master/vimrc
+set nojoinspaces              " Use one space, not two, after punctuation.
+
 set autoindent                " always set autoindenting on
 " "}}}
 
@@ -199,6 +202,9 @@ map <C-J> <C-W>j<C-W>_
 " filename and position)
 set winminheight =0
 
+" https://github.com/knewter/dotfiles/blob/master/vim/vimrc
+" Keep the cursor in place while joining lines
+nnoremap J mzJ`z
 
 " Visual "{{{
 syntax on                     " Switch syntax highlighting on, when the terminal has colors
