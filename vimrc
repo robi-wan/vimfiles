@@ -57,7 +57,7 @@ Plugin 'pangloss/vim-javascript'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'tpope/vim-haml'
 Plugin 'tmatilai/gitolite.vim'
-Plugin 'kusnier/vim-mediawiki'
+Plugin 'chikamichi/mediawiki.vim'
 Plugin 'PProvost/vim-ps1.git'
 Plugin 'elixir-lang/vim-elixir'
 
