@@ -75,6 +75,7 @@ Plugin 'tpope/vim-abolish'
 Plugin 'scrooloose/nerdtree'
 map <F2> :NERDTreeToggle<CR>
 Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'pbrisbin/vim-mkdir'
 
 " Tagbar requires ctags
 if executable("ctags")
